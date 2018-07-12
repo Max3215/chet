@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/chet.iml" filepath="$PROJECT_DIR$/chet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmcs2-chet/qmcs2-chet.iml" filepath="$PROJECT_DIR$/qmcs2-chet/qmcs2-chet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmcs2-common/qmcs2-common.iml" filepath="$PROJECT_DIR$/qmcs2-common/qmcs2-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmcs2-info/qmcs2-info.iml" filepath="$PROJECT_DIR$/qmcs2-info/qmcs2-info.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qmcs2-sms/qmcs2-sms.iml" filepath="$PROJECT_DIR$/qmcs2-sms/qmcs2-sms.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="qmcs2-chet" />
+        <module name="qmcs2-common" />
+        <module name="qmcs2-info" />
+        <module name="qmcs2-sms" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="chet" target="1.5" />
+      <module name="qmcs2-chet" target="1.8" />
+      <module name="qmcs2-common" target="1.8" />
+      <module name="qmcs2-info" target="1.8" />
+      <module name="qmcs2-sms" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

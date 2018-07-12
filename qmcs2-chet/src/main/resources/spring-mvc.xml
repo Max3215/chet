@@ -1,0 +1,43 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 扫描控制器 禁用use-default-filters 不重复扫描@Service,@Repository等..否则将导致事务失效 -->
+    <context:component-scan base-package="com.qmcs.*" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven />
+    <mvc:default-servlet-handler />
+    <!--网点pc端登陆需要拦截的-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean class="com.qmcs.chet.interceptor.EncodingInterceptor" />
+        </mvc:interceptor>
+        <!--app端登陆需要拦截的-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/notLogin"/>
+            <bean class="com.qmcs.chet.interceptor.AppLoginInterceptor" >
+                <property name="includeAppUrls">
+                    <!--需要登录拦截的url-->
+                    <list>
+
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

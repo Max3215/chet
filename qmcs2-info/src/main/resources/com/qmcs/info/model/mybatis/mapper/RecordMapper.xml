@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qmcs.info.model.mybatis.mapper.RecordMapper">
+  <resultMap id="BaseResultMap" type="com.qmcs.info.model.mybatis.model.Record">
+    <id column="record_id" jdbcType="BIGINT" property="recordId" />
+    <result column="record_user_id" jdbcType="BIGINT" property="recordUserId" />
+    <result column="record_count" jdbcType="VARCHAR" property="recordCount" />
+    <result column="record_type" jdbcType="INTEGER" property="recordType" />
+    <result column="record_time" jdbcType="BIGINT" property="recordTime" />
+    <result column="record_return_no" jdbcType="VARCHAR" property="recordReturnNo" />
+    <result column="record_open_id" jdbcType="VARCHAR" property="recordOpenId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    record_id, record_user_id, record_count, record_type, record_time, record_return_no, 
+    record_open_id
+  </sql>
+  <select id="selectByExample" parameterType="com.qmcs.info.model.mybatis.model.RecordCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart >= 0">
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_record
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qmcs.info.model.mybatis.model.RecordCriteria">
+    delete from t_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qmcs.info.model.mybatis.model.Record">
+    insert into t_record (record_id, record_user_id, record_count, 
+      record_type, record_time, record_return_no, 
+      record_open_id)
+    values (#{recordId,jdbcType=BIGINT}, #{recordUserId,jdbcType=BIGINT}, #{recordCount,jdbcType=VARCHAR}, 
+      #{recordType,jdbcType=INTEGER}, #{recordTime,jdbcType=BIGINT}, #{recordReturnNo,jdbcType=VARCHAR}, 
+      #{recordOpenId,jdbcType=VARCHAR})
+    <selectKey keyProperty="recordId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" parameterType="com.qmcs.info.model.mybatis.model.Record">
+    insert into t_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        record_id,
+      </if>
+      <if test="recordUserId != null">
+        record_user_id,
+      </if>
+      <if test="recordCount != null">
+        record_count,
+      </if>
+      <if test="recordType != null">
+        record_type,
+      </if>
+      <if test="recordTime != null">
+        record_time,
+      </if>
+      <if test="recordReturnNo != null">
+        record_return_no,
+      </if>
+      <if test="recordOpenId != null">
+        record_open_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId,jdbcType=BIGINT},
+      </if>
+      <if test="recordUserId != null">
+        #{recordUserId,jdbcType=BIGINT},
+      </if>
+      <if test="recordCount != null">
+        #{recordCount,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null">
+        #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="recordTime != null">
+        #{recordTime,jdbcType=BIGINT},
+      </if>
+      <if test="recordReturnNo != null">
+        #{recordReturnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="recordOpenId != null">
+        #{recordOpenId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    <selectKey keyProperty="recordId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <select id="countByExample" parameterType="com.qmcs.info.model.mybatis.model.RecordCriteria" resultType="java.lang.Long">
+    select count(*) from t_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_record
+    <set>
+      <if test="record.recordId != null">
+        record_id = #{record.recordId,jdbcType=BIGINT},
+      </if>
+      <if test="record.recordUserId != null">
+        record_user_id = #{record.recordUserId,jdbcType=BIGINT},
+      </if>
+      <if test="record.recordCount != null">
+        record_count = #{record.recordCount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordType != null">
+        record_type = #{record.recordType,jdbcType=INTEGER},
+      </if>
+      <if test="record.recordTime != null">
+        record_time = #{record.recordTime,jdbcType=BIGINT},
+      </if>
+      <if test="record.recordReturnNo != null">
+        record_return_no = #{record.recordReturnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.recordOpenId != null">
+        record_open_id = #{record.recordOpenId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_record
+    set record_id = #{record.recordId,jdbcType=BIGINT},
+      record_user_id = #{record.recordUserId,jdbcType=BIGINT},
+      record_count = #{record.recordCount,jdbcType=VARCHAR},
+      record_type = #{record.recordType,jdbcType=INTEGER},
+      record_time = #{record.recordTime,jdbcType=BIGINT},
+      record_return_no = #{record.recordReturnNo,jdbcType=VARCHAR},
+      record_open_id = #{record.recordOpenId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qmcs.info.model.mybatis.model.Record">
+    update t_record
+    <set>
+      <if test="recordUserId != null">
+        record_user_id = #{recordUserId,jdbcType=BIGINT},
+      </if>
+      <if test="recordCount != null">
+        record_count = #{recordCount,jdbcType=VARCHAR},
+      </if>
+      <if test="recordType != null">
+        record_type = #{recordType,jdbcType=INTEGER},
+      </if>
+      <if test="recordTime != null">
+        record_time = #{recordTime,jdbcType=BIGINT},
+      </if>
+      <if test="recordReturnNo != null">
+        record_return_no = #{recordReturnNo,jdbcType=VARCHAR},
+      </if>
+      <if test="recordOpenId != null">
+        record_open_id = #{recordOpenId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qmcs.info.model.mybatis.model.Record">
+    update t_record
+    set record_user_id = #{recordUserId,jdbcType=BIGINT},
+      record_count = #{recordCount,jdbcType=VARCHAR},
+      record_type = #{recordType,jdbcType=INTEGER},
+      record_time = #{recordTime,jdbcType=BIGINT},
+      record_return_no = #{recordReturnNo,jdbcType=VARCHAR},
+      record_open_id = #{recordOpenId,jdbcType=VARCHAR}
+    where record_id = #{recordId,jdbcType=BIGINT}
+  </update>
+  <insert id="insertBatch">
+    insert into t_record ( 
+    record_id,
+    record_user_id,
+    record_count,
+    record_type,
+    record_time,
+    record_return_no,
+    record_open_id
+     ) values 
+    <foreach collection="recordColl" item="record" separator=",">
+      (
+      <trim suffixOverrides=",">
+         #{record.recordId,jdbcType=BIGINT}, 
+         #{record.recordUserId,jdbcType=BIGINT}, 
+         #{record.recordCount,jdbcType=VARCHAR}, 
+         #{record.recordType,jdbcType=INTEGER}, 
+         #{record.recordTime,jdbcType=BIGINT}, 
+         #{record.recordReturnNo,jdbcType=VARCHAR}, 
+         #{record.recordOpenId,jdbcType=VARCHAR}, 
+      </trim>
+      )
+    </foreach>
+  </insert>
+  <insert id="insertBatchSel">
+    insert into t_record ( 
+    <trim suffixOverrides=",">
+      <if test="recordColl[0].recordId != null">
+        record_id,
+      </if>
+      <if test="recordColl[0].recordUserId != null">
+        record_user_id,
+      </if>
+      <if test="recordColl[0].recordCount != null">
+        record_count,
+      </if>
+      <if test="recordColl[0].recordType != null">
+        record_type,
+      </if>
+      <if test="recordColl[0].recordTime != null">
+        record_time,
+      </if>
+      <if test="recordColl[0].recordReturnNo != null">
+        record_return_no,
+      </if>
+      <if test="recordColl[0].recordOpenId != null">
+        record_open_id,
+      </if>
+    </trim>
+     ) values 
+    <foreach collection="recordColl" item="record" separator=",">
+      (
+      <trim suffixOverrides=",">
+        <if test="record.recordId != null">
+           #{record.recordId,jdbcType=BIGINT}, 
+        </if>
+        <if test="record.recordUserId != null">
+           #{record.recordUserId,jdbcType=BIGINT}, 
+        </if>
+        <if test="record.recordCount != null">
+           #{record.recordCount,jdbcType=VARCHAR}, 
+        </if>
+        <if test="record.recordType != null">
+           #{record.recordType,jdbcType=INTEGER}, 
+        </if>
+        <if test="record.recordTime != null">
+           #{record.recordTime,jdbcType=BIGINT}, 
+        </if>
+        <if test="record.recordReturnNo != null">
+           #{record.recordReturnNo,jdbcType=VARCHAR}, 
+        </if>
+        <if test="record.recordOpenId != null">
+           #{record.recordOpenId,jdbcType=VARCHAR}, 
+        </if>
+      </trim>
+      )
+    </foreach>
+  </insert>
+  <select id="selectByExampleForOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+
+  <select id="selectRecordListByUserId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_record
+    where record_user_id = #{userId,jdbcType=BIGINT} AND record_return_no = '成功'
+    ORDER BY record_time DESC
+    LIMIT #{limitStart},#{pageSize}
+  </select>
+
+  <select id="selectUserEndOne" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM t_record
+    WHERE
+    <if test="userId != null">
+      record_user_id = #{userId,jdbcType=BIGINT} AND
+    </if>
+    <if test="openId != null">
+      record_open_id = #{openId,jdbcType=VARCHAR} AND
+    </if>
+     record_return_no = '成功'
+    ORDER BY  record_id  DESC limit 1
+  </select>
+
+
+
+
+</mapper>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="qmcs2-chet:war">
+    <output-path>$PROJECT_DIR$/qmcs2-weixin/target</output-path>
+    <root id="archive" name="qmcs2-chet.war">
+      <element id="artifact" artifact-name="qmcs2-chet:war exploded" />
+    </root>
+  </artifact>
+</component>
