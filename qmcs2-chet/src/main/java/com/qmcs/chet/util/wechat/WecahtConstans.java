@@ -8,13 +8,13 @@ package com.qmcs.chet.util.wechat;
  */
 public interface WecahtConstans {
 
-    String APPID = "wx36c6032da5c7a129";
+    String APPID = "";
 
-    String MCHID = "1416101102";
+    String MCHID = "";
 
-    String KEY = "e7aab753372d1437cc6c6c86cd2902e0";
+    String KEY = "";
 
-    String APPSECRET = "8e59607650dc3e24f2090803b56ef820";
+    String APPSECRET = "";
 
     String TRADE_TYPE_JSAPI = "JSAPI";
 
