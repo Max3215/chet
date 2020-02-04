@@ -43,7 +43,7 @@
 		<!--alibaba druid-->
 		<druid.version>1.0.9</druid.version>
 
-		<shiro.version>1.2.3</shiro.version>
+		<shiro.version>1.5.0</shiro.version>
 		<hadoop.version>1.2.1</hadoop.version>
 		<guava.version>16.0.1</guava.version>
 		<aliyun.sersion>2.6.0</aliyun.sersion>
