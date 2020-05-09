@@ -32,9 +32,9 @@ public class AliyunOSSConstant {
     //public static final String STS_ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
     public static final String STS_ENDPOINT = "http://oss.qmcs-china.com";
     //阿里云OSS的API的密钥Access Key ID
-    public static final String STS_ACCESS_KEY_ID = "LTAIQby93fQjhScb";
+    public static final String STS_ACCESS_KEY_ID = "";
     //阿里云OSS的API的密钥Access Key Secret
-    public static final String STS_ACCESS_KEY_SECRET = "1Oe7xDeWY9JyI154dyanVHlufce0a7";
+    public static final String STS_ACCESS_KEY_SECRET = "";
     //===============================================================================
 
     /**
@@ -49,12 +49,9 @@ public class AliyunOSSConstant {
      * 顶级目录
      */
     //=======================================================
-    //200测试
-    public static final String TOP_QMCS200 = "top-qmcs-200/";
+
     //线上测试
-    public static final String TOP_QMCS244 = "top-qmcs-244/";
-    //线上测试
-    public static final String TOP_QMCS = "top-qmcs/";
+    public static final String TOP = "top/";
 
     //=======================================================
 
@@ -65,25 +62,7 @@ public class AliyunOSSConstant {
      */
     //===============================模块文件存放路径==================================
     //------------------------------一级目录------------------------------------------
-    //包裹发布图片路径
-    public static final String PACKAGE = "package";
-    //包裹破损订单图片
-    public static final String ORDER = "order";
-    //用户头像
-    public static final String QMCS_U_head = "qmcs-u/head";
-    //用户身份证
-    public static final String QMCS_U_identity = "qmcs-u/identity";
-    //网点
-    public static final String QMCS_NW_head = "qmcs-nw/head";
-    //网点身份证
-    public static final String QMCS_NW_identity = "qmcs-nw/identity";
-    //平台
-    public static final String QMCS_MS = "qmcs-ms";
-    //用户端广告
-    public static final String QMCS_U_ADVERTISEMENT = "qmcs-u/Advertisement";
-    //网点端广告
-    public static final String QMCS_NW_ADVERTISEMENT = "qmcs-nw/Advertisement";
-
+   
 
     /**
      * STS授权参数
@@ -91,9 +70,9 @@ public class AliyunOSSConstant {
     //=================================其他参数=======================================
     //RoleArn 需要在 RAM 控制台上获取 用来控制读写操作
     //写操作
-    public static final String ROLEARN_WRITE = "acs:ram::1978972869684055:role/qmcsimgwrite";
+    public static final String ROLEARN_WRITE = "";
     //读操作
-    public static final String ROLEARN_READ = "acs:ram::1978972869684055:role/qmcsimgreadonly";
+    public static final String ROLEARN_READ = "";
     //临时凭证的时间控制(S:秒) -- 图片上传的临时授权时间为900(s) * 2 = 30分钟
     public static final Integer DURATION_SECONDS_UPLOAD = 900 * 2;
     //临时凭证的时间控制(S:秒) -- 图片展示的临时授权时间为900(s) * 2 = 30分钟
